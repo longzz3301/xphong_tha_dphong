@@ -1,0 +1,24 @@
+27/12
+
+-allEmployee page:
++ inhaber, manager -> hien tat ca nhan vien thay vi nhung nhan viên dưới cấp
++ them cot: dem so luong nhan vien, active, inactive.
+- SalaryPage: cong thuc tinh luong moi
++ ([a/(default_working_time)] * default_working_time) +(working_time - default_working_time)*f -b -c + muc 14 - muc 15 + muc 9 * d(default 0.25)) : working_time > default_working_time
++ working_time < default_working_time: [a/(default_working_time)] * working_time -b -c + muc 14 - muc 15 + muc 9 * d(default 0.25))
+
+1. Service:
+- bar
+- gesamt
+- trinked_ec
+- trink_geld
+- auf_rechnung
+- results
+
+2. Lito
+- bar
+- kredit_karte
+- kassen_schniff
+- gesamt_ligerbude
+- gesamt_liegerando
+- results

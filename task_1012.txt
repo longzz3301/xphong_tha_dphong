@@ -1,0 +1,53 @@
+1. Bo phone + Add Ngay nghi phep mac dinh: Done
+2. Bo group => Xoay quanh shift: Done
+3. Ngay nghi van di lam: Done
+4. An vao shift bt ai dang di lam: Done
+5. Chon ngay => Chon shift => add nhan vien: Done
+6. Tong so gio lam quan trong => count tong so gio lam (chinh xac tung phut): Done
+7. Khong check out sau 30p => Auto lay gio het ca la check out: Done
+8. [[(So gio lam + overtime)*a] - b - c] + muc 14 - muc 15 + muc 9 * d(default 0.25): Done
+   a,b,c: Tu nhap thang dau tien. Thang sau lay save cua thang truoc
+9. role: tai xe => checkin success => chon xe + nhap km: Done
+   chon xe: 1. xe cong ty (tu nhap infor)
+            2. xe private: tinh tong so km chay xe private cua 1 nguoi
+   checkout: nhap km kthuc ngay: Done
+10. role: delivery 
+    check out: gui anh tong ket
+11. checkin truoc 30p:Done
+12. employee nhin duoc attend + schedule current month: Done
+13. employee xin nghi phep: Done
+- xin trc 1 thang
+- notification cho admin (email..)
+- check xem qua tong so ngay nghi mac dinh
+14. Luong ngay nghi: (b*3)/65 * (day-off-days): Done
+15. Tien thue nha: Them vao employee_infor, them tong so nghi + ngay con cua nhan vien: Done
+16. export cac thong so tinh luong nhan vien
+17. export: employee_infor
+18. Them ngay out cty cua employee, them ngay con + giu ngay nghi goc: Done
+19. Dem ngay check attend late cua employee(month): Done
+20. Link bang hang thang voi database(co the sua infor=>anh huong den db)----De sau
+21. 1 nhan vien co the di lam tat ca chi nhanh
+22. Trang employee: login => scan qr/view schedules/view attendance history
+23. active/inactive: inactive k tinh salary, active tinh
+24. them ngay active(ngay bdau lam) + ngay inactive(ngay nghi lam cty)
+25. email trang thai handle request
+
+các position trong mỗi chi nhánh theo thứ tự từ lớn đến nhỏ:
+1. Admin
+2. Inhaber
+3. Manager
+4. Employee
+Các chi nhánh: (vì mỗi chi nhánh sẽ có ngươif quản lí riêng nên việc chọn nhân viên này thuộc chi nhánh nào rất quan trọng. Người và việc của chi nhanh A sẽ ko nhìn đc của chi nhánh B. Phần này trong lúc họp chị quên chưa đề cập đến )
+C1
+C2
+C3
+C4
+C6
+C Ulm
+Wabi
+Buero
+FacTech
+——————
+2. Inhaber sẽ có quyền làm hết trong chi nhánh của mình (xem và sửa toàn bộ nhân viên, thêm shift, xem ngày nghỉ phép, tính lương,...), chỉ được phép add nhân viên có chức vụ thấp hơn mình. không được phép add thêm người có chức vụ ngang bằng. Không xem đc các chi nhánh khác, không thêm được chi nhánh mới
+
+3. Manager Chi nhánh sẽ được phép add hoặc delete một nhân viên vào một ca. được phép add nhân viên có chức vụ thấp hơn.

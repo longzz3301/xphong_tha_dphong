@@ -1,0 +1,68 @@
+To do BE:
+1. fix 1 employee vao duoc nhieu department:Done
+2. status: active => active_day => ngay tao employee: Done
+status: inactive => inactive_day => ngay khoa employee(co the tu chon) => khong thuc hien duoc cac function khac:Done
+3. exports: table of all employees basic infor, table of salary follow month for all employees, table of attendance stats + salary follow month of a employee
+4. add shift for employee: co the add shift cho 1 nhieu ngay khac nhau cung 1 shift (Ex: CA1 cho 20/12, 23/12, 30/12,..) nhung phai trong 1 thang:Done
+*Note:
+- add shift can them department_name => tu chon options theo department_name cua employee => FE lam
+- add multiples date trong 1 thang: Thoi gian 1 thang FE tu gioi han
+5. day off/request day off: 
+5.1 admin update request day off => update so ngay nghi cua nhan vien
+5.2 duyet/k duyet request => email notification for employee
+6. add schedules for employee: choose department:Done
+7. role: tai xe => checkin success => chon xe + nhap km: Done
+   chon xe: 1. xe cong ty (tu nhap infor)
+            2. xe private: tinh tong so km chay xe private cua 1 nguoi
+   checkout: nhap km kthuc ngay: Done
+8. role: delivery 
+   check out: gui anh tong ket
+
+
+To do Employee FE:
+1. Employee normal
+1.1 Login => 3 options: Scan QR, View Schedules 1 month, View Attendance 1 month
+1.2 Scan QR: Scan Success => alert => Choose option page
+1.3 View Schedules 1 month: 
+- Display schedules cua nhan vien trong calendar
+- An vao 1 ngay trong schedules => view details schedule (shift_design, date, department_name)
+1.4 View Schedules 1 month: 
+- Display attendance history cua nhan vien trong calendar
+- An vao 1 ngay trong attendance history => view details attendance(shift_infor, date, department_name, status)
+2. Employee(position: Autofahrer)
+2.1 Login => 4 options: Scan QR, 
+Check in:
+	Choose Car(
+	car_type: 2 options: company, private, 
+	car_number, register_day) + Type Km(check_in_km)
+Check out: Type Km(check_out_km)
+View Schedules 1 month, View Attendance 1 month
+2.2 Scan QR: Scan Success => alert => Choose Car + Type Km => Choose option page
+2.3 View Schedules 1 month: 
+- Display schedules cua nhan vien trong calendar
+- An vao 1 ngay trong schedules => view details schedule (shift_design, date, department_name)
+2.4 View Schedules 1 month: 
+- Display attendance history cua nhan vien trong calendar
+- An vao 1 ngay trong attendance history => view details attendance(shift_infor, date, department_name, check_in_km, check_out_km, total_km, status)
+3. Employee(position: Lito)
+3.1 Login => 4 options: Scan QR, 
+Check out: Form: tien thu, tien tips, tien phat sinh, upload image
+, View Schedules 1 month, View Attendance 1 month
+3.2 Scan QR: Scan Success => alert => Fill form (check out) => Choose option page
+3.3 View Schedules 1 month: 
+- Display schedules cua nhan vien trong calendar
+- An vao 1 ngay trong schedules => view details schedule (shift_design, date, department_name)
+3.4 View Schedules 1 month: 
+- Display attendance history cua nhan vien trong calendar
+- An vao 1 ngay trong attendance history => view details attendance(shift_infor, date, department_name, check_out_image, status)
+4. Employee(position: Service)
+4.1 Login => 4 options: Scan QR, 
+Check out: Form: tien thu, tien tips, tien phat sinh
+, View Schedules 1 month, View Attendance 1 month
+4.2 Scan QR: Scan Success => alert => Fill form (check out) => Choose option page
+4.3 View Schedules 1 month: 
+- Display schedules cua nhan vien trong calendar
+- An vao 1 ngay trong schedules => view details schedule (shift_design, date, department_name)
+4.4 View Schedules 1 month: 
+- Display attendance history cua nhan vien trong calendar
+- An vao 1 ngay trong attendance history => view details attendance(shift_infor, date, department_name, check_out_image, status)

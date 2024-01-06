@@ -1,0 +1,35 @@
+Update dashboard : hien calendar chon ngay => hien status checkin
+Inhaber, manager: co the lm nhieu chi nhanh
+Default total hour per month: => add shift => display rest of time (co the am)
+Total overtime: total hour - Default total hour per month
+Export lich lam(schedules) trong thoi gian lua chọn: from -> to (1 nhan vien or 1 department -> admin -> inhaber)
+
+Manager: chi dc phep add ca cho nhan vien va tao nhan viên moi 
+
+Salary: them cot tong thoi gian, lam tron lượng hai so sau dau phay, them so ngay day off
+Add salary counting: Employee ID -> Employee Name
+Them history Salary: hien history cac tham so a b c d ngay thay doi
+
+Sua thoi gian check in, check out, status => history
+Log:
+Ngay giờ
+Nguni update
+Nguni dc update
+Update cgi
+Cai tong the
+
+inhaber: schema car: thong tin xe: biển so, ngay dang kiếm, thuoc department nao:
+
+
+1. Add lich
+Chon nvien, department, position => Chon shift => Add schedules success => stats: default_schedule_times - duration = realistic_schedule_times = time_left (schedules.time_left)
+2. Check attend
+Chon nvien, current time => current schedules => check attend => Sau khi check out => stats: attendance_total_times = attendance.total_hour + attendance.total_minutes (convert to hour), attendance_overtime = attendance_total_times - default_schedule_times => employee.department.attendance_stats: on time, late, missing
+3. Salary calculate:
+Cthuc: 
+(normal_time + overtime)*a - b - c + (b*3)/65 * (day-off-days) - house_rent_money + total_km * d(default 0.25)
+normal_time = stats: attendance_total_times
+overtime = stats: attendance_overtime
+day-off-days = employee: default_day_off - realistic_day_off
+house_rent_money: employee: house_rent_money
+total_km(employee position Autofarehr): attendanceSchema: total_km 
