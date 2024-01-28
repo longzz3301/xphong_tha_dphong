@@ -117,9 +117,9 @@ export const salaryCalculate = async (req, res, next) => {
         total_km: 0,
         a_parameter: a,
         b_parameter: b,
-        c_parameter: c,
-        d_parameter: d,
-        f_parameter: f
+        // c_parameter: c,
+        // d_parameter: d,
+        // f_parameter: f
     };
 
     employeeAttendance.forEach(attendance => {
@@ -150,12 +150,12 @@ export const salaryCalculate = async (req, res, next) => {
 
     // Calculate day-off salary
     const days_off = employee.default_day_off - employee.realistic_day_off;
-    const salary_day_off = [(b * 3) / 65] * days_off;
+    const salary_day_off = [(b * 3) / 65] * days_off; 
 
-    if (salaryRecord.total_times > employee.total_time_per_month) {
-        salaryRecord.total_salary = (a / employee.total_time_per_month) * employee.total_time_per_month + (salaryRecord.total_times - employee.total_time_per_month) * f - b - c + salary_day_off - employee.house_rent_money + salaryRecord.total_km * d;
-    }
-    salaryRecord.total_salary = (a / employee.total_time_per_month) * salaryRecord.total_times - b - c + salary_day_off - employee.house_rent_money + salaryRecord.total_km * d;
+    // if (salaryRecord.total_times > employee.total_time_per_month) {
+    //     salaryRecord.total_salary = (a / employee.total_time_per_month) * employee.total_time_per_month + (salaryRecord.total_times - employee.total_time_per_month) * f - b - c + salary_day_off - employee.house_rent_money + salaryRecord.total_km * d;
+    // }
+    salaryRecord.total_salary = a * salaryRecord.total_times + salary_day_off 
 
     await employee.save();
     // Save or update the salary record

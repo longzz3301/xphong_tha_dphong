@@ -156,7 +156,7 @@ export const updateEmployee = async (req, res, next) => {
 //     }
 // };
 
-// tìm nhân viên 
+// get list nhân viên done  
 export const getEmployeeById = async (req, res, next) => {
     const employeeID = req.query.employeeID;
     try {
@@ -174,7 +174,7 @@ export const getEmployeeById = async (req, res, next) => {
 };
 
 
-// delete nhân viên 
+// delete nhân viên done 
 export const deleteEmployeeById = async (req, res, next) => {
     const employeeID = req.query.employeeID;
     try {
@@ -209,7 +209,7 @@ export const deleteEmployeeById = async (req, res, next) => {
 };
 
 
-// search employee , Inhaber , Manager theo bộ lọc // details . 
+// search employee , Inhaber , Manager theo bộ lọc // details . done 
 export const searchSpecific = async (req, res, next) => {
     const { role, department, details, status } = req.query;
     try {
@@ -278,7 +278,8 @@ export const searchSpecific = async (req, res, next) => {
 };
 
 
-// get lọc theo năm tháng ngày , deparment =>  employee 
+// trang dash board get employee working để xem nhưng nhân viên có ca làm hôm đó và hiển thị thời gian ca làm  (lọc theo ngày và depar)
+// get lọc theo năm tháng ngày , deparment =>  querry theo employee schema  
 export const getAllEmployeesSchedules = async (req, res, next) => {
     const targetYear = req.query.year ? parseInt(req.query.year) : null;
     const targetMonth = req.query.month ? parseInt(req.query.month) - 1 : null; // ? 
@@ -336,8 +337,8 @@ export const getAllEmployeesSchedules = async (req, res, next) => {
     }
 };
 
-
-// get lịch attend của 
+// dash board này lọc theo ngày và depart sau đó trả ra list nvien trong ca đó và list nhân viên đã điểm danh dưới 
+// get  attend của nhaan vien   querry the0 attendance schema lọc theo ngày và depa 
 export const getAttendance = async (req, res, next) => {
     try {
         const employeeID = req.query.employeeID;
@@ -361,7 +362,7 @@ export const getAttendance = async (req, res, next) => {
                 }
             }
 
-            dateRange = date 
+            dateRange = date // tính month ? 
                 ? {
                     $gte: new Date(year, month - 1, date.getDate(), 0, 0, 0, 0),
                     $lt: new Date(year, month - 1, date.getDate() + 1, 0, 0, 0, 0),
@@ -371,6 +372,7 @@ export const getAttendance = async (req, res, next) => {
                     $lt: new Date(year, month, 1),
                 };
         }
+        console.log("dateRange :" , dateRange)
 
         let query = {};
         if (Object.keys(dateRange).length > 0) {
@@ -385,8 +387,10 @@ export const getAttendance = async (req, res, next) => {
             query['department_name'] = departmentName;
         }
 
+        console.log("query" , query)
         // Execute the query
         const attendances = await AttendanceSchema.find(query).lean();
+        console.log("attendances" , attendances)
 
         return res.status(OK).json({
             success: true,

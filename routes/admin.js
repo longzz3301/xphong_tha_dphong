@@ -28,18 +28,18 @@ import {
 const router = express.Router();
 
 // all
-router.get('/manage-all/search-specific', verifyTokenAdmin, searchSpecific);
+router.get('/manage-all/search-specific', verifyTokenAdmin, searchSpecific); //search infor employee by name , role , depa , id , position 
 
 // employee
 router.get('/manage-employee/get-all-schedules', verifyTokenAdmin, getAllEmployeesSchedules);
-router.get('/manage-employee/get-byId', verifyTokenAdmin, getEmployeeById);
-router.delete('/manage-employee/delete-byId', verifyTokenAdmin, deleteEmployeeById);
-router.put('/manage-employee/update-basic', verifyTokenAdmin, updateEmployee);
+router.get('/manage-employee/get-byId', verifyTokenAdmin, getEmployeeById); //  get employee
+router.delete('/manage-employee/delete-byId', verifyTokenAdmin, deleteEmployeeById); // delete employee 
+router.put('/manage-employee/update-basic', verifyTokenAdmin, updateEmployee); //  update 
 // router.put('/manage-employee/make-inactive', verifyTokenAdmin, madeEmployeeInactive);
 
 // department
-router.post('/manage-department/create', verifyTokenAdmin, createDepartment);
-router.get('/manage-department/get-all', verifyTokenAdmin, getAllDepartments);
+router.post('/manage-department/create', verifyTokenAdmin, createDepartment); // tạo 
+router.get('/manage-department/get-all', verifyTokenAdmin, getAllDepartments);//(1) get casc department cho muc select dashboard 
 router.get('/manage-department/get-by-name', verifyTokenAdmin, getDepartmentByName);
 router.get('/manage-department/get-specific', verifyTokenAdmin, getDepartmentSpecific);
 router.put('/manage-department/update', verifyTokenAdmin, updateDepartment);
@@ -49,35 +49,35 @@ router.delete('/manage-department/delete', verifyTokenAdmin, deleteDepartmentByN
 
 // shift
 router.post('/manage-shift/create', verifyTokenAdmin, createShift); // tạo ca làm 
-router.get('/manage-shift/get-all', verifyTokenAdmin, getAllShifts); // lấy bảng các ca làm được tạo  
+router.get('/manage-shift/get-all', verifyTokenAdmin, getAllShifts); // lấy các ca làm được tạo để add vào ngày làm việc trong lịch 
 router.get('/manage-shift/get-by-code', verifyTokenAdmin, getShiftByCode); //
 router.get('/manage-shift/get-by-name', verifyTokenAdmin, getShiftByName);
 router.put('/manage-shift/update', verifyTokenAdmin, updateShift);
 
 // date design
-// router.post('/manage-date-design/create-days', verifyTokenAdmin, xcreateMultipleDateDesigns);
-// router.get('/manage-date-design/get-by-specific', verifyTokenAdmin, getDateDesign);
-// router.delete('/manage-date-design/delete', verifyTokenAdmin, deleteDateSpecific);
+router.post('/manage-date-design/create-days', verifyTokenAdmin, xcreateMultipleDateDesigns);
+router.get('/manage-date-design/get-by-specific', verifyTokenAdmin, getDateDesign); // gọi api này để gán thời gian querry từ ca làm vào ngày làm của nhân viên 
+router.delete('/manage-date-design/delete', verifyTokenAdmin, deleteDateSpecific);
 
 // day off
-// router.post('/manage-day-off/create', verifyTokenAdmin, createDayOff);
-// router.get('/manage-day-off/get-all', verifyTokenAdmin, getAllGlobalDayOffs);
-// router.get('/manage-day-off/get-byId/:_id', verifyTokenAdmin, getDayOffById);
-// router.delete('/manage-day-off/delete-byId/:_id', verifyTokenAdmin, deleteDayOffById);
-// router.get('/manage-day-off/get-specific-employee', verifyTokenAdmin, getEmployeeDayOffs);
-// router.delete('/manage-day-off/delete-employee/:_id', verifyTokenAdmin, deleteEmployeeDayOff);
+router.post('/manage-day-off/create', verifyTokenAdmin, createDayOff);
+router.get('/manage-day-off/get-all', verifyTokenAdmin, getAllGlobalDayOffs);
+router.get('/manage-day-off/get-byId/:_id', verifyTokenAdmin, getDayOffById);
+router.delete('/manage-day-off/delete-byId/:_id', verifyTokenAdmin, deleteDayOffById);
+router.get('/manage-day-off/get-specific-employee', verifyTokenAdmin, getEmployeeDayOffs);
+router.delete('/manage-day-off/delete-employee/:_id', verifyTokenAdmin, deleteEmployeeDayOff);
 
-// manage request
+// manage request ???
 router.get('/manage-request/get-all', verifyTokenAdmin, getAllRequests); // ? 
 router.get('/manage-request/get-byId/:_id', verifyTokenAdmin, getRequestById);
 router.put('/manage-request/handle/:_id', verifyTokenAdmin, handleRequest);
 
 // manage attendance
-router.get('/manage-attendance/get-by-specific', verifyTokenAdmin, getAttendance);
+router.get('/manage-attendance/get-by-specific', getAttendance); // (1) trang dash board get những attendance đã được điểm danh của employee theo Date 
 router.put('/manage-attendance/update/:_id', verifyTokenAdmin, updateAttendance);
 
-// manage salary
-router.post('/manage-salary/calculate/:employeeID', verifyTokenAdmin, salaryCalculate);
+// manage salary 
+router.post('/manage-salary/calculate/:employeeID', verifyTokenAdmin, salaryCalculate); // tính tiền lương 
 router.get('/manage-salary/get', verifyTokenAdmin, getSalary); // lấy bảng chấm công theo giờ 
 
 // manage xlsx

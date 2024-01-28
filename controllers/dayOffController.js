@@ -15,7 +15,7 @@ function calculateDuration(startDate, endDate) {
     return durationInDays;
 }
 
-export const createDayOff = async (req, res, next) => {
+export const createDayOff = async (req, res, next) => { // 
     const date_start = req.body.date_start;
     const date_end = req.body.date_end;
     const employeeID = req.query.employeeID;
