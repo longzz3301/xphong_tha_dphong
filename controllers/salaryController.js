@@ -37,9 +37,9 @@ export const salaryCalculate = async (req, res, next) => {
     // Initialize parameters for calculation
     let a = req.body.a_new;
     let b = req.body.b_new;
-    let c = req.body.c_new;
-    let d = req.body.d_new ?? 0.25;
-    let f = req.body.f_new;
+    // let c = req.body.c_new;
+    // let d = req.body.d_new ?? 0.25;
+    // let f = req.body.f_new;
 
     if (!a) {
         if (existSalary) {
@@ -65,29 +65,6 @@ export const salaryCalculate = async (req, res, next) => {
         }
     }
 
-    if (!c) {
-        if (existSalary) {
-            c = existSalary.c_parameter;
-        } else {
-            return res.status(BAD_REQUEST).json({
-                success: false,
-                status: BAD_REQUEST,
-                message: "You need to provided c parameter",
-            });
-        }
-    }
-
-    if (!f) {
-        if (existSalary) {
-            f = existSalary.f_parameter;
-        } else {
-            return res.status(BAD_REQUEST).json({
-                success: false,
-                status: BAD_REQUEST,
-                message: "You need to provided f parameter",
-            });
-        }
-    }
 
     // Define the date range for the whole month
     const dateRange = {

@@ -18,7 +18,7 @@ import {
     exportAttendanceToExcel, exportEmployeeDataToExcel, exportEmployeeSalaryDataToExcel
 } from '../controllers/xlsxController.js';
 import {
-    xcreateMultipleDateDesigns, deleteDateSpecific, getDateDesign
+    createMultipleDateDesigns, deleteDateSpecific, getDateDesign
 } from '../controllers/dateDesignController.js';
 import {
     createDayOff, deleteDayOffById, deleteEmployeeDayOff,
@@ -55,8 +55,8 @@ router.get('/manage-shift/get-by-name', verifyTokenAdmin, getShiftByName);
 router.put('/manage-shift/update', verifyTokenAdmin, updateShift);
 
 // date design
-router.post('/manage-date-design/create-days', verifyTokenAdmin, xcreateMultipleDateDesigns);
-router.get('/manage-date-design/get-by-specific', verifyTokenAdmin, getDateDesign); // gọi api này để gán thời gian querry từ ca làm vào ngày làm của nhân viên 
+router.post('/manage-date-design/create-days', verifyTokenAdmin, createMultipleDateDesigns);
+router.get('/manage-date-design/get-by-specific', verifyTokenAdmin, getDateDesign);
 router.delete('/manage-date-design/delete', verifyTokenAdmin, deleteDateSpecific);
 
 // day off

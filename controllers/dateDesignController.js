@@ -5,9 +5,10 @@ import ShiftSchema from "../models/ShiftSchema.js";
 import StatsSchema from "../models/StatsSchema.js";
 import { createError } from "../utils/error.js";
 
-export const xcreateMultipleDateDesigns = async (req, res, next) => {
+export const createMultipleDateDesigns = async (req, res, next) => {
     const shiftCode = req.body.shift_code;
     const employeeID = req.query.employeeID;
+    const employeeName = req.query.employeeName;
     const departmentName = req.query.department_name;
     const dates = req.body.dates;
     const convertToMinutes = (timeString) => {
@@ -22,7 +23,7 @@ export const xcreateMultipleDateDesigns = async (req, res, next) => {
         const shift = await ShiftSchema.findOne({ code: shiftCode });
         if (!shift) return next(createError(NOT_FOUND, "Shift not found!"));
 
-        const employee = await EmployeeSchema.findOne({ id: employeeID });
+        const employee = await EmployeeSchema.findOne({ id: employeeID, name: employeeName });
         if (!employee) return next(createError(NOT_FOUND, "Employee not found!"));
         if (employee.status === "inactive") return next(createError(NOT_FOUND, "Employee not active!"));
 
@@ -47,6 +48,7 @@ export const xcreateMultipleDateDesigns = async (req, res, next) => {
 
             let stats = await StatsSchema.findOne({
                 employee_id: employee.id,
+                employee_name: employee.name,
                 year: year,
                 month: month
             });
