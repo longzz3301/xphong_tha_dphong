@@ -232,7 +232,7 @@ export const exportEmployeeDataToExcel = async (req, res, next) => {
                 role: employee.role || '',
                 default_day_off: employee.default_day_off || '',
                 realistic_day_off: employee.realistic_day_off || '',
-                house_rent_money: employee.house_rent_money || '',
+                // house_rent_money: employee.house_rent_money || '',
                 status: employee.status || '',
                 active_day: employee.active_day || '',
                 inactive_day: employee.inactive_day || '',
@@ -243,10 +243,10 @@ export const exportEmployeeDataToExcel = async (req, res, next) => {
         })
 
         // Write buffer
-        const buffer = await workbook.xlsx.writeBuffer();
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.setHeader('Content-Disposition', 'attachment; filename=Employee_Data.xlsx');
-        res.send(buffer);
+        // const buffer = await workbook.xlsx.writeBuffer();
+        // res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        // res.setHeader('Content-Disposition', 'attachment; filename=Employee_Data.xlsx');
+        // res.send(buffer);
 
         // Save the buffer to the file path
         try {

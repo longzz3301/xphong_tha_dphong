@@ -31,7 +31,7 @@ const router = express.Router();
 router.get('/manage-all/search-specific', verifyTokenAdmin, searchSpecific); //search infor employee by name , role , depa , id , position 
 
 // employee
-router.get('/manage-employee/get-all-schedules', verifyTokenAdmin, getAllEmployeesSchedules);
+router.get('/manage-employee/get-all-schedules', verifyTokenAdmin, getAllEmployeesSchedules); // get các nhân viên querry theo thời gian lịch làm 
 router.get('/manage-employee/get-byId', verifyTokenAdmin, getEmployeeById); //  get employee
 router.delete('/manage-employee/delete-byId', verifyTokenAdmin, deleteEmployeeById); // delete employee 
 router.put('/manage-employee/update-basic', verifyTokenAdmin, updateEmployee); //  update 
@@ -81,7 +81,7 @@ router.post('/manage-salary/calculate/:employeeID', verifyTokenAdmin, salaryCalc
 router.get('/manage-salary/get', verifyTokenAdmin, getSalary); // lấy bảng chấm công theo giờ 
 
 // manage xlsx
-router.get('/manage-xlsx/employee-data', verifyTokenAdmin, exportEmployeeDataToExcel);
+router.get('/manage-xlsx/employee-data', verifyTokenAdmin, exportEmployeeDataToExcel); // export file dữ liệu 
 router.get('/manage-xlsx/salary-data', verifyTokenAdmin, exportEmployeeSalaryDataToExcel);
 router.get('/manage-xlsx/attendance-data', verifyTokenAdmin, exportAttendanceToExcel);
 

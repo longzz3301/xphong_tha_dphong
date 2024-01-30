@@ -282,7 +282,7 @@ export const searchSpecific = async (req, res, next) => {
 // get lọc theo năm tháng ngày , deparment =>  querry theo employee schema  
 export const getAllEmployeesSchedules = async (req, res, next) => {
     const targetYear = req.query.year ? parseInt(req.query.year) : null;
-    const targetMonth = req.query.month ? parseInt(req.query.month) - 1 : null; // ? 
+    const targetMonth = req.query.month ? parseInt(req.query.month) - 1 : null; 
     const targetDate = req.query.date ? new Date(req.query.date) : null;
     const departmentFilter = req.query.department_name;
     try {
@@ -291,7 +291,7 @@ export const getAllEmployeesSchedules = async (req, res, next) => {
 
         employees.forEach(employee => {
             employee.department.forEach(department => {
-                if (!departmentFilter || department.name === departmentFilter) {
+                if ( department.name === departmentFilter) { 
                     department.schedules.forEach(schedule => {
                         const scheduleDate = new Date(schedule.date);
 
@@ -362,7 +362,7 @@ export const getAttendance = async (req, res, next) => {
                 }
             }
 
-            dateRange = date // tính month ? 
+            dateRange = date //  
                 ? {
                     $gte: new Date(year, month - 1, date.getDate(), 0, 0, 0, 0),
                     $lt: new Date(year, month - 1, date.getDate() + 1, 0, 0, 0, 0),
