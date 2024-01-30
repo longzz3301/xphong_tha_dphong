@@ -37,9 +37,9 @@ export const salaryCalculate = async (req, res, next) => {
     // Initialize parameters for calculation
     let a = req.body.a_new;
     let b = req.body.b_new;
-    let c = req.body.c_new;
-    let d = req.body.d_new ?? 0.25;
-    let f = req.body.f_new;
+    // let c = req.body.c_new;
+    // let d = req.body.d_new ?? 0.25;
+    // let f = req.body.f_new;
 
     if (!a) {
         if (existSalary) {
@@ -65,29 +65,6 @@ export const salaryCalculate = async (req, res, next) => {
         }
     }
 
-    if (!c) {
-        if (existSalary) {
-            c = existSalary.c_parameter;
-        } else {
-            return res.status(BAD_REQUEST).json({
-                success: false,
-                status: BAD_REQUEST,
-                message: "You need to provided c parameter",
-            });
-        }
-    }
-
-    if (!f) {
-        if (existSalary) {
-            f = existSalary.f_parameter;
-        } else {
-            return res.status(BAD_REQUEST).json({
-                success: false,
-                status: BAD_REQUEST,
-                message: "You need to provided f parameter",
-            });
-        }
-    }
 
     // Define the date range for the whole month
     const dateRange = {
@@ -152,11 +129,18 @@ export const salaryCalculate = async (req, res, next) => {
     const days_off = employee.default_day_off - employee.realistic_day_off;
     const salary_day_off = [(b * 3) / 65] * days_off; 
 
+<<<<<<< HEAD
     if (salaryRecord.total_times > employee.total_time_per_month) {
         // salaryRecord.total_salary = (a / employee.total_time_per_month) * employee.total_time_per_month + (salaryRecord.total_times - employee.total_time_per_month) * f - b - c + salary_day_off - employee.house_rent_money + salaryRecord.total_km * d;
          salaryRecord.total_salary = stats.attendance_total_times*a + salary_day_off
     }
     salaryRecord.total_salary = a * salaryRecord.total_times + salary_day_off 
+=======
+    // if (salaryRecord.total_times > employee.total_time_per_month) {
+    //     salaryRecord.total_salary = (a / employee.total_time_per_month) * employee.total_time_per_month + (salaryRecord.total_times - employee.total_time_per_month) * f - b - c + salary_day_off - employee.house_rent_money + salaryRecord.total_km * d;
+    // }
+    salaryRecord.total_salary = a * salaryRecord.total_hour_work + salary_day_off 
+>>>>>>> aa10e82c25d01255bb623161a86edd0260d5bc0a
 
     await employee.save();
     // Save or update the salary record
